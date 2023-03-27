@@ -1,4 +1,4 @@
-package com.example.foroshgah_slami.activites
+package com.example.foroshgah_slami.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

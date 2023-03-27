@@ -1,4 +1,4 @@
-package com.example.foroshgah_slami.activites
+package com.example.foroshgah_slami.activities
 
 import android.content.Intent
 import android.os.Build
@@ -24,7 +24,7 @@ class splash_activity : AppCompatActivity() {
             )
         }
         Handler().postDelayed({
-            startActivity(Intent(this@splash_activity, MainActivity::class.java))
+            startActivity(Intent(this@splash_activity, LoginActivity::class.java))
             finish()
         } ,2500)
     }

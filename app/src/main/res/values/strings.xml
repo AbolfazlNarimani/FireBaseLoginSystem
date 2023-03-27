@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">foroshgah_slami</string>
+    <string name="content_description">image</string>
+    <string name="title_login">LOGIN</string>
+    <string name="et_hint_email_id">Email ID</string>
+    <string name="et_hint_password">password</string>
+    <string name="lbl_forgot_password">Forgot Password?</string>
+    <string name="btn_lbl_login">Login</string>
+    <string name="don_t_have_an_account">don\'t have an account?</string>
+    <string name="register"><u>Register</u></string>
+    <string name="editText_text">abc@gmail.com</string>
+    <string name="password_text">123456</string>
+
 </resources>

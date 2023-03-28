@@ -1,4 +1,6 @@
 <resources>
+
+    <!--LoginStrings-->
     <string name="app_name">foroshgah_slami</string>
     <string name="content_description">image</string>
     <string name="title_login">LOGIN</string>
@@ -11,4 +13,13 @@
     <string name="editText_text">abc@gmail.com</string>
     <string name="password_text">123456</string>
 
+    <!--registerStrings-->
+    <string name="create_an_account">CREATE AND ACCOUNT</string>
+    <string name="hint_last_name">Last name</string>
+    <string name="hint_first_name">First name</string>
+    <string name="et_hint_confirm_password">Confirm Password</string>
+    <string name="i_agree_to_the_terms_and_conditions">I Agree To The <u> Terms &amp; Conditions</u></string>
+    <string name="btn_lbl_register">Register</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login"><u>Login</u></string>
 </resources>

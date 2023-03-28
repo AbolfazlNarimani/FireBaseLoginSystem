@@ -12,8 +12,6 @@ class MSPEditText (context: Context , attrs: AttributeSet): AppCompatEditText(co
     }
 
 
-
-
     private fun apllyFont() {
 
         val typeface: Typeface =

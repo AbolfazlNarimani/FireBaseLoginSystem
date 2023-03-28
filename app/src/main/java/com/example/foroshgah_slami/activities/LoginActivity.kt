@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.TextView
 import com.example.foroshgah_slami.R
+import org.w3c.dom.Text
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,10 +24,13 @@ class LoginActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
-/*        Handler().postDelayed({
-            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+
+        val tv_register = findViewById<TextView>(R.id.tv_register)
+        tv_register.setOnClickListener {
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+            startActivity(intent)
             finish()
-        } ,2500)*/
+        }
     }
 
 }

@@ -13,7 +13,7 @@
     <string name="editText_text">abc@gmail.com</string>
     <string name="password_text">123456</string>
 
-    <!--registerStrings-->
+    <!--RegisterStrings-->
     <string name="create_an_account">CREATE AND ACCOUNT</string>
     <string name="hint_last_name">Last name</string>
     <string name="hint_first_name">First name</string>
@@ -22,4 +22,15 @@
     <string name="btn_lbl_register">Register</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="login"><u>Login</u></string>
+
+
+    <!--RegisterErrStrings-->
+    <string name="err_msg_enter_first_name">Please enter first name.</string>
+    <string name="err_msg_enter_last_name">Please enter last name.</string>
+    <string name="err_msg_enter_email">Please enter email</string>
+    <string name="err_msg_enter_password">Please enter password</string>
+    <string name="err_msg_enter_confirm_password">Please enter confirm password</string>
+    <string name="err_msg_password_and_confirm_password_mismatch">Password and confirm password mismatch</string>
+    <string name="err_msg_agrre_terms_and_conditions">Please agree terms and conditions</string>
+    <string name="registery_successful">Thanks for registering!</string>
 </resources>

@@ -1,9 +1,8 @@
 package com.example.foroshgah_slami.activities
 
 import android.app.Dialog
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.foroshgah_slami.R
 import com.example.foroshgah_slami.databinding.ActivityBaseBinding

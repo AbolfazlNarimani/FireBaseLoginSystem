@@ -33,13 +33,11 @@ class RegisterActivity : BaseActivity() {
             )
         }
 
-        setupActionBar()
+
 
         val tv_login = findViewById<TextView>(R.id.tv_login)
         tv_login.setOnClickListener {
-            val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-            startActivity(intent)
-
+            onBackPressed()
         }
 
         binding.btnRegister.setOnClickListener {

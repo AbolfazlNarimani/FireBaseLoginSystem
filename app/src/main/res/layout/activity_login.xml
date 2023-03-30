@@ -17,9 +17,9 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/backgroundtheme"
             android:contentDescription="@string/content_description"
-            android:scaleType="fitXY"
-            android:background="@drawable/backgroundtheme" />
+            android:scaleType="fitXY" />
 
         <ImageView
             android:layout_width="360dp"
@@ -31,24 +31,24 @@
 
             app:tint="@color/white" />
     </FrameLayout>
-    
+
     <com.example.foroshgah_slami.utils.MSPTextViewBold
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_title"
         android:layout_marginTop="35dp"
         android:text="@string/title_login"
         android:textColor="@color/colorPrimaryText"
         android:textSize="@dimen/title_textSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fl_header_image"/>
+        app:layout_constraintTop_toBottomOf="@+id/fl_header_image" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/til_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="35dp"
         android:layout_marginEnd="16dp"
@@ -56,25 +56,24 @@
         android:textColorHint="@color/colorSecondaryText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title" >
+        app:layout_constraintTop_toBottomOf="@id/tv_title">
 
         <com.example.foroshgah_slami.utils.MSPEditText
+            android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/et_email"
             android:inputType="text"
             android:padding="@dimen/et_padding"
             android:textColor="@color/colorPrimaryText"
-            android:textSize="@dimen/et_textSize"
-            android:text="@string/editText_text"/>
+            android:textSize="@dimen/et_textSize" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/til_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
@@ -85,37 +84,39 @@
         app:layout_constraintTop_toBottomOf="@id/til_email">
 
         <com.example.foroshgah_slami.utils.MSPEditText
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/et_password"
+            android:inputType="textPassword"
             android:padding="@dimen/et_padding"
             android:textColor="@color/colorPrimaryText"
-            android:textSize="@dimen/et_textSize"
-            android:text="@string/password_text"/>
+            android:textSize="@dimen/et_textSize" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.example.foroshgah_slami.utils.MSPTextView
+        android:id="@+id/tv_forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_forgot_password"
         android:layout_marginEnd="16sp"
         android:foreground="?attr/selectableItemBackground"
+        android:paddingTop="7dp"
+        android:text="@string/lbl_forgot_password"
         android:textColor="@color/colorSecondaryText"
         android:textSize="@dimen/forgot_password_textSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_password" />
 
     <com.example.foroshgah_slami.utils.MSPButton
+        android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_login"
-        android:gravity="center"
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_background"
         android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
         android:paddingTop="@dimen/btn_padding"
         android:paddingBottom="@dimen/btn_padding"
         android:text="@string/btn_lbl_login"
@@ -123,7 +124,7 @@
         android:textSize="@dimen/btn_textSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_forgot_password"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_forgot_password" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -136,24 +137,24 @@
         app:layout_constraintTop_toBottomOf="@id/btn_login">
 
         <com.example.foroshgah_slami.utils.MSPTextView
+            android:id="@+id/tv_don_t_have_an_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_don_t_have_an_account"
             android:layout_marginTop="16dp"
             android:padding="@dimen/clickable_text_view_padding"
             android:text="@string/don_t_have_an_account"
-            android:textSize="@dimen/lbl_text_view_textSize"/>
+            android:textSize="@dimen/lbl_text_view_textSize" />
 
         <com.example.foroshgah_slami.utils.MSPTextViewBold
+            android:id="@+id/tv_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_register"
             android:layout_marginTop="16dp"
             android:foreground="?attr/selectableItemBackground"
             android:padding="@dimen/clickable_text_view_padding"
             android:text="@string/register"
             android:textColor="@color/colorSecondaryText"
-            android:textSize="@dimen/lbl_text_view_textSize"/>
+            android:textSize="@dimen/lbl_text_view_textSize" />
 
     </LinearLayout>
 

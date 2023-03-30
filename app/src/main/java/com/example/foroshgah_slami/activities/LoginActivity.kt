@@ -33,14 +33,17 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
-
+        binding.tvRegister.setOnClickListener(this)
+        binding.btnLogin.setOnClickListener(this)
+        binding.tvForgotPassword.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
         if (view != null) {
             when (view.id) {
                 R.id.tv_forgot_password -> {
-
+                    val intent = Intent(this@LoginActivity, ForgotPasswordActivity::class.java)
+                    startActivity(intent)
                 }
 
                 R.id.btn_login -> {
@@ -68,7 +71,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                 false
             }
             else -> {
-                
+
                 true
             }
         }
@@ -82,8 +85,8 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
             showProgressDialog(resources.getString(R.string.please_wait))
 
             //Get the next form editText and trim the space
-            val email = binding.etEmail.text.toString().trim {it <= ' '}
-            val password = binding.etPassword.text.toString().trim {it <= ' '}
+            val email = binding.etEmail.text.toString().trim { it <= ' ' }
+            val password = binding.etPassword.text.toString().trim { it <= ' ' }
 
             //Log_In using FirebaseAuth
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
@@ -94,7 +97,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
                     if (task.isSuccessful) {
                         // TODO - Send user to Main Activity
-                        showErrorSnackBar("you are logged in successfully",false)
+                        showErrorSnackBar("you are logged in successfully", false)
                     } else {
                         showErrorSnackBar(task.exception!!.message!!.toString(), true)
                     }

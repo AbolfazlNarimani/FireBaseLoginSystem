@@ -7,6 +7,10 @@
     <string name="et_hint_email_id">Email ID</string>
     <string name="et_hint_password">password</string>
     <string name="lbl_forgot_password">Forgot Password?</string>
+    <string name="title_forgot_password">FORGOT PASSWORD?</string>
+    <string name="forgot_password_title_description">Enter your username and e-mail address we\'ll send you a email to reset your password</string>
+    <string name="email_sent_success">\"Email sent successfully to reset your password! \"</string>
+    <string name="btn_lbl_submit">Submit</string>
     <string name="btn_lbl_login">Login</string>
     <string name="don_t_have_an_account">don\'t have an account?</string>
     <string name="register"><u>Register</u></string>

@@ -32,5 +32,10 @@
     <string name="err_msg_enter_confirm_password">Please enter confirm password</string>
     <string name="err_msg_password_and_confirm_password_mismatch">Password and confirm password mismatch</string>
     <string name="err_msg_agrre_terms_and_conditions">Please agree terms and conditions</string>
-    <string name="registery_successful">Thanks for registering!</string>
+    <string name="registery_successful">You are registered successfully. Your user id is</string>
+
+    <!--Progress Bar-->
+    <string name="please_wait">Please wait&#8230;</string>
+
+
 </resources>

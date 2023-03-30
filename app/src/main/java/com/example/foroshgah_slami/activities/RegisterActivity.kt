@@ -10,17 +10,21 @@ import android.view.WindowManager
 import android.widget.TextView
 import com.example.foroshgah_slami.R
 import com.example.foroshgah_slami.databinding.ActivityRegisterBinding
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 private lateinit var binding: ActivityRegisterBinding
+
 class RegisterActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-         binding = ActivityRegisterBinding.inflate(layoutInflater)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
         } else {
             window.setFlags(
@@ -35,11 +39,11 @@ class RegisterActivity : BaseActivity() {
         tv_login.setOnClickListener {
             val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
             startActivity(intent)
-            finish()
+
         }
 
         binding.btnRegister.setOnClickListener {
-            validateRegisterDetails()
+            registerUser()
         }
 
     }
@@ -59,43 +63,89 @@ class RegisterActivity : BaseActivity() {
 
     private fun validateRegisterDetails(): Boolean {
         return when {
-            TextUtils.isEmpty(binding.etFirstName.text.toString().trim {it <= ' '}) -> {
+            TextUtils.isEmpty(binding.etFirstName.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(resources.getString(R.string.err_msg_enter_first_name), true)
                 false
             }
 
-            TextUtils.isEmpty(binding.etLastName.text.toString().trim {it <= ' '}) -> {
+            TextUtils.isEmpty(binding.etLastName.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(resources.getString(R.string.err_msg_enter_last_name), true)
                 false
             }
 
-            TextUtils.isEmpty(binding.etEmail.text.toString().trim {it <= ' '}) -> {
+            TextUtils.isEmpty(binding.etEmail.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(resources.getString(R.string.err_msg_enter_email), true)
                 false
             }
 
-            TextUtils.isEmpty(binding.etPassword.text.toString().trim {it <= ' '}) -> {
+            TextUtils.isEmpty(binding.etPassword.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(resources.getString(R.string.err_msg_enter_password), true)
                 false
             }
-            TextUtils.isEmpty(binding.etConfirmPassword.text.toString().trim {it <= ' '}) -> {
-                showErrorSnackBar(resources.getString(R.string.err_msg_enter_confirm_password), true)
+            TextUtils.isEmpty(binding.etConfirmPassword.text.toString().trim { it <= ' ' }) -> {
+                showErrorSnackBar(
+                    resources.getString(R.string.err_msg_enter_confirm_password),
+                    true
+                )
                 false
             }
 
-            binding.etPassword.text.toString().trim {it <= ' '} != binding.etConfirmPassword.text.toString().trim {it <= ' '} -> {
-                showErrorSnackBar(resources.getString(R.string.err_msg_password_and_confirm_password_mismatch), true)
+            binding.etPassword.text.toString()
+                .trim { it <= ' ' } != binding.etConfirmPassword.text.toString()
+                .trim { it <= ' ' } -> {
+                showErrorSnackBar(
+                    resources.getString(R.string.err_msg_password_and_confirm_password_mismatch),
+                    true
+                )
                 false
             }
 
             !binding.cbTermsAndConditions.isChecked -> {
-                showErrorSnackBar(resources.getString(R.string.err_msg_agrre_terms_and_conditions), true)
+                showErrorSnackBar(
+                    resources.getString(R.string.err_msg_agrre_terms_and_conditions),
+                    true
+                )
                 false
             }
             else -> {
-                showErrorSnackBar(resources.getString(R.string.registery_successful) , false)
+                //showErrorSnackBar(resources.getString(R.string.registery_successful), false)
                 true
             }
         }
     }
+
+    private fun registerUser() {
+
+        // check with validate function if the entries are valid or not
+        if (validateRegisterDetails()) {
+
+            showProgressDialog(resources.getString(R.string.please_wait))
+
+            val email: String = binding.etEmail.text.toString().trim { it <= ' ' }
+            val password: String = binding.etPassword.text.toString().trim { it <= ' ' }
+
+            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener { Task ->
+                    hideProgressDialog()
+                    // if the registration is successfully done
+                    if (Task.isSuccessful) {
+                        // firebase registered user
+                        val firebaseUser: FirebaseUser = Task.result!!.user!!
+
+                        showErrorSnackBar(
+                            "You are registered successfully. Your user id is ${firebaseUser.uid}",
+                            false
+                        )
+                        FirebaseAuth.getInstance().signOut()
+                        finish()
+                    } else {
+                        // if the registering is not successful then show the error message
+                        showErrorSnackBar(Task.exception!!.message.toString(), true)
+                    }
+                }
+
+        }
+
+    }
+
 }

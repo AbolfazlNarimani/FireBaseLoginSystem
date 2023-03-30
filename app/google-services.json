@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "650022281880",
+    "project_id": "foroshgah-c77cb",
+    "storage_bucket": "foroshgah-c77cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650022281880:android:0336de94b2e05f1e7466ed",
+        "android_client_info": {
+          "package_name": "com.example.foroshgah_slami"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "650022281880-aialec5maufnii1v19lm4h03uvnhl0h4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3KVE3XDp0YUJfAz2OzO0OABC_LHokwHo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "650022281880-aialec5maufnii1v19lm4h03uvnhl0h4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

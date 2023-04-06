@@ -37,7 +37,6 @@ class RegisterActivity : BaseActivity() {
         }
 
 
-
         val tv_login = findViewById<TextView>(R.id.tv_login)
         tv_login.setOnClickListener {
             onBackPressed()
@@ -135,16 +134,17 @@ class RegisterActivity : BaseActivity() {
 
                         val user = User(
                             firebaseUser.uid,
-                            binding.etFirstName.text.toString().trim {it <= ' '},
-                            binding.etLastName.text.toString().trim {it <= ' '},
-                            binding.etEmail.text.toString().trim {it <= ' '}
+                            binding.etFirstName.text.toString().trim { it <= ' ' },
+                            binding.etLastName.text.toString().trim { it <= ' ' },
+                            binding.etEmail.text.toString().trim { it <= ' ' }
                         )
 
                         FirestoreClass().registerUser(this@RegisterActivity, userInfo = user)
 
 
                         if (user.profileCompleted == 0) {
-                            val intent = Intent(this@RegisterActivity, UserProfileActivity::class.java)
+                            val intent =
+                                Intent(this@RegisterActivity, UserProfileActivity::class.java)
                             startActivity(intent)
                             finish()
                         } else {
@@ -163,7 +163,7 @@ class RegisterActivity : BaseActivity() {
 
     }
 
-    fun  userRegistrationSuccess() {
+    fun userRegistrationSuccess() {
 
         hideProgressDialog()
 

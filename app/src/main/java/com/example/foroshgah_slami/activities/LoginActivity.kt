@@ -16,6 +16,7 @@ import com.example.foroshgah_slami.databinding.ActivityLoginBinding
 import com.example.foroshgah_slami.databinding.ActivityRegisterBinding
 import com.example.foroshgah_slami.firestore.FirestoreClass
 import com.example.foroshgah_slami.models.User
+import com.example.foroshgah_slami.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import org.w3c.dom.Text
 
@@ -118,6 +119,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
         if (user.profileCompleted == 0) {
             val intent = Intent(this@LoginActivity, UserProfileActivity::class.java)
+            intent.putExtra(Constants.EXTRA_USER_DETAILS, user)
             startActivity(intent)
             finish()
         } else {

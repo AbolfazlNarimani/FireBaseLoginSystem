@@ -106,7 +106,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-    fun userLoggedInSuccess(user:User) {
+    fun userLoggedInSuccess(user: User) {
 
         // hide the progress dialog.
         hideProgressDialog()
@@ -116,9 +116,14 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         Log.i("Last Name", user.lastName)
         Log.i("Email", user.email)
 
-        // Redirect the user to main screen after login.
-        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-        finish()
+        if (user.profileCompleted == 0) {
+            val intent = Intent(this@LoginActivity, UserProfileActivity::class.java)
+            startActivity(intent)
+            finish()
+        } else {
+            // Redirect the user to main screen after login.
+            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            finish()
+        }
     }
-
 }

@@ -142,8 +142,16 @@ class RegisterActivity : BaseActivity() {
 
                         FirestoreClass().registerUser(this@RegisterActivity, userInfo = user)
 
-                       // FirebaseAuth.getInstance().signOut()
-                       // finish()
+
+                        if (user.profileCompleted == 0) {
+                            val intent = Intent(this@RegisterActivity, UserProfileActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            // Redirect the user to main screen after login.
+                            startActivity(Intent(this@RegisterActivity, MainActivity::class.java))
+                            finish()
+                        }
                     } else {
                         hideProgressDialog()
                         // if the registering is not successful then show the error message

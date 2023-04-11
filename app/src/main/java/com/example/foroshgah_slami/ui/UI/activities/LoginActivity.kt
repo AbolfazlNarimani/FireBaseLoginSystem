@@ -1,24 +1,18 @@
-package com.example.foroshgah_slami.activities
+package com.example.foroshgah_slami.ui.UI.activities
 
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.TextView
 import com.example.foroshgah_slami.R
 import com.example.foroshgah_slami.databinding.ActivityLoginBinding
-import com.example.foroshgah_slami.databinding.ActivityRegisterBinding
 import com.example.foroshgah_slami.firestore.FirestoreClass
 import com.example.foroshgah_slami.models.User
 import com.example.foroshgah_slami.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
-import org.w3c.dom.Text
 
 private lateinit var binding: ActivityLoginBinding
 
@@ -124,8 +118,12 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
             finish()
         } else {
             // Redirect the user to main screen after login.
-            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
             finish()
         }
+    }
+
+    override fun onBackPressed() {
+        doubleBackToExit()
     }
 }

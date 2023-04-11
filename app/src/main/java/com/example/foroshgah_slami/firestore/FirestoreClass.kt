@@ -5,17 +5,17 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
-import com.example.foroshgah_slami.activities.LoginActivity
-import com.example.foroshgah_slami.activities.RegisterActivity
-import com.example.foroshgah_slami.activities.UserProfileActivity
+import com.example.foroshgah_slami.ui.UI.activities.LoginActivity
+import com.example.foroshgah_slami.ui.UI.activities.RegisterActivity
+import com.example.foroshgah_slami.ui.UI.activities.UserProfileActivity
 import com.example.foroshgah_slami.models.User
+import com.example.foroshgah_slami.ui.UI.activities.SettingsActivity
 import com.example.foroshgah_slami.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.UploadTask.TaskSnapshot
 
 class FirestoreClass {
     private val mFireStore = FirebaseFirestore.getInstance()
@@ -81,7 +81,7 @@ class FirestoreClass {
 
                 editor.putString(
                     Constants.LOGGED_IN_USERNAME,
-                    "${user.firsName} ${user.lastName}"
+                    "${user.firstName} ${user.lastName}"
                 )
                 editor.apply()
 
@@ -91,8 +91,23 @@ class FirestoreClass {
                         // call a function of base activity for transferring the result to it
                         activity.userLoggedInSuccess(user)
                     }
+
+                    is SettingsActivity -> {
+
+                        activity.userDetailSuccess(user)
+
+                    }
                 }
                 // END
+            }
+            .addOnFailureListener { e ->
+                when (activity) {
+                    is LoginActivity -> { activity.hideProgressDialog()}
+
+                    is SettingsActivity -> {activity.hideProgressDialog()}
+                }
+
+                Log.e(activity.javaClass.simpleName, "error while getting user details")
             }
     }
 

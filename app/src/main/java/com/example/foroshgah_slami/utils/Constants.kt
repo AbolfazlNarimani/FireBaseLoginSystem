@@ -20,6 +20,8 @@ object Constants {
     const val IMAGE: String = "image"
     const val USER_PROFILE_IMAGE: String = "user_profile_image"
     const val COMPLETE_PROFILE: String = "profileCompleted"
+    const val FIRST_NAME: String = "firstName"
+    const val LAST_NAME: String = "lastName"
 
     fun showImageChooser(activity: Activity) {
         // An internal for launching the image selection of phone storage

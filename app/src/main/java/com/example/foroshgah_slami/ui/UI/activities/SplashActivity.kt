@@ -1,21 +1,20 @@
-package com.example.foroshgah_slami.activities
+package com.example.foroshgah_slami.ui.UI.activities
 
 import android.content.Intent
 import android.os.Build
-import android.os.Build.VERSION_CODES
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import com.example.foroshgah_slami.R
 
-class splash_activity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        if (Build.VERSION.SDK_INT >= VERSION_CODES.R){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
             window.insetsController?.hide(WindowInsets.Type.statusBars())
         } else {
             window.setFlags(
@@ -24,7 +23,7 @@ class splash_activity : AppCompatActivity() {
             )
         }
         Handler().postDelayed({
-            startActivity(Intent(this@splash_activity, LoginActivity::class.java))
+            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
             finish()
         } ,2500)
     }

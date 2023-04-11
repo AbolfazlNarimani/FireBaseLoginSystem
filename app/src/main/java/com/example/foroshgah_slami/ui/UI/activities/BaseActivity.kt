@@ -1,17 +1,12 @@
-package com.example.foroshgah_slami.activities
+package com.example.foroshgah_slami.ui.UI.activities
 
+import android.R
 import android.app.Dialog
-import android.os.Looper
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.example.foroshgah_slami.R
-import com.example.foroshgah_slami.databinding.ActivityBaseBinding
 import com.google.android.material.snackbar.Snackbar
-import java.util.logging.Handler
-
-private lateinit var binding: ActivityBaseBinding
 
 open class BaseActivity : AppCompatActivity() {
 
@@ -20,21 +15,21 @@ open class BaseActivity : AppCompatActivity() {
 
     fun showErrorSnackBar(message: String, errorMessage: Boolean) {
         val snackBar =
-            Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG)
+            Snackbar.make(findViewById(R.id.content), message, Snackbar.LENGTH_LONG)
         val snackBarView = snackBar.view
 
         if (errorMessage) {
             snackBarView.setBackgroundColor(
                 ContextCompat.getColor(
                     this@BaseActivity,
-                    R.color.colorSnackBarError
+                    com.example.foroshgah_slami.R.color.colorSnackBarError
                 )
             )
         } else {
             snackBarView.setBackgroundColor(
                 ContextCompat.getColor(
                     this@BaseActivity,
-                    R.color.colorSnackBarSuccess
+                    com.example.foroshgah_slami.R.color.colorSnackBarSuccess
                 )
             )
         }
@@ -47,9 +42,9 @@ open class BaseActivity : AppCompatActivity() {
         /*Set the screen content from a layout resource
         the resource will be inflated, adding all top-level views to the screen
          */
-        mProgressDialog.setContentView(R.layout.dialog_progress)
+        mProgressDialog.setContentView(com.example.foroshgah_slami.R.layout.dialog_progress)
 
-        mProgressDialog.findViewById<TextView>(R.id.tv_progress_text).text = text
+        mProgressDialog.findViewById<TextView>(com.example.foroshgah_slami.R.id.tv_progress_text).text = text
 
         mProgressDialog.setCancelable(false)
         mProgressDialog.setCanceledOnTouchOutside(false)
@@ -62,7 +57,7 @@ open class BaseActivity : AppCompatActivity() {
         mProgressDialog.dismiss()
     }
 
-    fun doubleBackToExitPressedOnce() {
+    fun doubleBackToExit() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
             return
@@ -71,7 +66,8 @@ open class BaseActivity : AppCompatActivity() {
         this.doubleBackToExitPressedOnce = true
 
         Toast.makeText(
-            this@BaseActivity, resources.getString(R.string.please_click_back_again_to_exit),
+            this@BaseActivity,
+            resources.getString(com.example.foroshgah_slami.R.string.please_click_back_again_to_exit),
             Toast.LENGTH_SHORT
         ).show()
 

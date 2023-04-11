@@ -1,4 +1,4 @@
-package com.example.foroshgah_slami.activities
+package com.example.foroshgah_slami.ui.UI.activities
 
 import android.os.Build
 import android.os.Bundle
@@ -7,11 +7,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import com.example.foroshgah_slami.R
 import com.example.foroshgah_slami.databinding.ActivityForgotPasswordBinding
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
-
-
 
 class ForgotPasswordActivity : BaseActivity() {
 

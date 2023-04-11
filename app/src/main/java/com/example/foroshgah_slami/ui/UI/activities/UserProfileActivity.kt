@@ -1,7 +1,6 @@
-package com.example.foroshgah_slami.activities
+package com.example.foroshgah_slami.ui.UI.activities
 
 import android.Manifest
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -50,13 +49,38 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             mUserDetails = intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
         }
 
-        // making the first name and last name and Email immutable
-        binding.etFirstName.isEnabled = false
-        binding.etFirstName.setText(mUserDetails.firsName)
-        binding.etLastName.isEnabled = false
+        binding.etFirstName.setText(mUserDetails.firstName)
         binding.etLastName.setText(mUserDetails.lastName)
-        binding.etEmail.isEnabled = false
         binding.etEmail.setText(mUserDetails.email)
+
+        if (mUserDetails.profileCompleted == 0) {
+            binding.tvTitle.text = resources.getString(R.string.title_compete_profile)
+
+            binding.etFirstName.isEnabled = false
+            binding.etLastName.isEnabled = false
+            binding.etEmail.isEnabled = false
+
+        } else {
+
+            binding.tvTitle.text = getString(R.string.Edit_profile)
+            GlideLoader(this@UserProfileActivity).loadUserPicture(
+                mUserDetails.image,
+                binding.ivUserPhoto
+            )
+            binding.etFirstName.isEnabled = true
+            binding.etLastName.isEnabled = true
+            binding.etEmail.isEnabled = false
+
+
+            if (mUserDetails.mobile != 0L) {
+                binding.etMobileNumber.setText(mUserDetails.mobile.toString())
+            }
+            if (mUserDetails.gender == Constants.MALE) {
+                binding.rbMale.isChecked = true
+            } else binding.rbFemale.isChecked = true
+
+
+        }
 
         // adding set on click listener for profile image
         binding.ivUserPhoto.setOnClickListener(this@UserProfileActivity)
@@ -113,7 +137,12 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
         val userHashMap = HashMap<String, Any>()
 
-        val mobileNumber = binding.etMobileNumber.text.toString().trim { it <= ' ' }
+        val firstName = binding.etFirstName.text.toString().trim { it <= ' ' }
+        if (firstName != mUserDetails.firstName) {userHashMap[Constants.FIRST_NAME] = firstName}
+
+        val lastName = binding.etLastName.text.toString().trim { it <= ' ' }
+        if (lastName != mUserDetails.lastName) {userHashMap[Constants.LAST_NAME] = lastName}
+
 
         val gender = if (binding.rbMale.isChecked) {
             Constants.MALE
@@ -125,9 +154,12 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             userHashMap[Constants.IMAGE] = mUserProfileImageURL
         }
 
-        if (mobileNumber.isNotEmpty()) {
+        val mobileNumber = binding.etMobileNumber.text.toString().trim { it <= ' ' }
+        if (mobileNumber.isNotEmpty() && mobileNumber != mUserDetails.mobile.toString()) {
             userHashMap[Constants.MOBILE] = mobileNumber.toLong()
         }
+
+        if (gender.isNotEmpty() && gender != mUserDetails.gender) {userHashMap[Constants.GENDER] = gender}
         // key: gender value: value
         userHashMap[Constants.GENDER] = gender
 
@@ -144,7 +176,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
             Toast.LENGTH_SHORT
         ).show()
 
-        startActivity(Intent(this@UserProfileActivity, MainActivity::class.java))
+        startActivity(Intent(this@UserProfileActivity, DashboardActivity::class.java))
         finish()
     }
 
@@ -170,7 +202,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK) {
+        if (resultCode == RESULT_OK) {
             if (requestCode == Constants.PICK_IMAGE_REQUEST_CODE) {
                 if (data != null) {
                     try {
@@ -208,14 +240,3 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         updateUserProfileDetails()
     }
 }
-
-
-
-
-
-
-
-
-
-
-

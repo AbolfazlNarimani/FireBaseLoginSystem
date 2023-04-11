@@ -11,9 +11,11 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 
-private lateinit var binding: ActivityForgotPasswordBinding
+
 
 class ForgotPasswordActivity : BaseActivity() {
+
+    private lateinit var binding: ActivityForgotPasswordBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityForgotPasswordBinding.inflate(layoutInflater)

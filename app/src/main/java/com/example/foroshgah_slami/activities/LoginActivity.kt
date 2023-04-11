@@ -112,10 +112,10 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         // hide the progress dialog.
         hideProgressDialog()
 
-        // Print the user details in the log as of now
+/*        // Print the user details in the log as of now
         Log.i("Firs Name", user.firsName)
         Log.i("Last Name", user.lastName)
-        Log.i("Email", user.email)
+        Log.i("Email", user.email)*/
 
         if (user.profileCompleted == 0) {
             val intent = Intent(this@LoginActivity, UserProfileActivity::class.java)

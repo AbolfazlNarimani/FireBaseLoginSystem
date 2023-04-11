@@ -1,19 +1,22 @@
 package com.example.foroshgah_slami.activities
 
 import android.app.Dialog
+import android.os.Looper
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.foroshgah_slami.R
 import com.example.foroshgah_slami.databinding.ActivityBaseBinding
 import com.google.android.material.snackbar.Snackbar
+import java.util.logging.Handler
 
 private lateinit var binding: ActivityBaseBinding
 
 open class BaseActivity : AppCompatActivity() {
 
     private lateinit var mProgressDialog: Dialog
-
+    private var doubleBackToExitPressedOnce = false
 
     fun showErrorSnackBar(message: String, errorMessage: Boolean) {
         val snackBar =
@@ -57,5 +60,21 @@ open class BaseActivity : AppCompatActivity() {
 
     fun hideProgressDialog() {
         mProgressDialog.dismiss()
+    }
+
+    fun doubleBackToExitPressedOnce() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed()
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+
+        Toast.makeText(
+            this@BaseActivity, resources.getString(R.string.please_click_back_again_to_exit),
+            Toast.LENGTH_SHORT
+        ).show()
+
+        android.os.Handler().postDelayed({ doubleBackToExitPressedOnce = false}, 2000)
     }
 }

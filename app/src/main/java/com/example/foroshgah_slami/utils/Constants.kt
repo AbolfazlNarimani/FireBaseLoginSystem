@@ -19,6 +19,8 @@ object Constants {
     const val GENDER: String = "gender"
     const val IMAGE: String = "image"
     const val USER_PROFILE_IMAGE: String = "user_profile_image"
+    const val COMPLETE_PROFILE: String = "profileCompleted"
+
     fun showImageChooser(activity: Activity) {
         // An internal for launching the image selection of phone storage
         val galleryIntent = Intent(
